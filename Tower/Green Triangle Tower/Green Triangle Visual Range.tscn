@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dem382pc3wgu"]
+
+[ext_resource type="Script" path="res://Tower/Green Triangle Tower/Green Triangle Visual Range.gd" id="1_lmqan"]
+
+[node name="GreenTriangleVisualRange" type="Polygon2D"]
+polygon = PackedVector2Array(0, 0, 60, -255, 0, -332, -60, -255)
+script = ExtResource("1_lmqan")

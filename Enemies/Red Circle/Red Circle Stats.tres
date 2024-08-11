@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=3 format=3 uid="uid://btcmor2f4kppe"]
+
+[ext_resource type="Texture2D" uid="uid://c035te2j00eho" path="res://Sprites/New_Enemy.png" id="1_ertka"]
+[ext_resource type="Script" path="res://Custom Resourses/Stats.gd" id="1_yk7xn"]
+
+[resource]
+script = ExtResource("1_yk7xn")
+max_health = 15
+max_speed = 20.0
+art = ExtResource("1_ertka")

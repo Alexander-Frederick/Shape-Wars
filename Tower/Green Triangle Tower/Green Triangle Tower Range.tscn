@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://ue3hh6vfrse8"]
+
+[node name="GreenTriangleTowerRange" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(0, 0, 60, -255, 0, -332, -60, -255)

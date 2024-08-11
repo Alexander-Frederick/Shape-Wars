@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bknliwf2yrjub"]
+
+[node name="GT_Projectile_Collision" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(0, -8, 5, 8, -5, 8)

@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Shape Wars"
+run/main_scene="res://Menus_Folder/Menu_Scenes/Main_Menu/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Main="*res://Main.tscn"
+MenuControl="*res://Menus_Folder/Main Menu/Menu_Control.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
+window/main_scene="res://Menus_Folder/main_menu.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+
+[layer_names]
+
+2d_physics/layer_1="Ally"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="End Goal"
+2d_physics/layer_4="Buff"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
+textures/lossless_compression/force_png=true
+2d/snap/snap_2d_transforms_to_pixel=true

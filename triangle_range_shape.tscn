@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1ye71t5open3"]
+
+[node name="Triangle Range Shape" type="CollisionPolygon2D"]
+rotation = -3.14159
+scale = Vector2(30, 30)
+polygon = PackedVector2Array(0, 0, 3, 10, 0, 13, -3, 10)

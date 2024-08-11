@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://da3vw7d62bqe6"]
+
+[ext_resource type="Script" path="res://Tower/Green Triangle Tower/Green_Triangle_Script.gd" id="1_w7yo4"]
+[ext_resource type="Resource" uid="uid://c6lqgx2561ew4" path="res://Tower/Green Triangle Tower/Triangle Tower.tres" id="2_caru4"]
+[ext_resource type="PackedScene" uid="uid://bar0imggfvx3r" path="res://Tower/Green Triangle Tower/Projectile/green_triangle_projectile.tscn" id="3_josf4"]
+[ext_resource type="Resource" uid="uid://coh6h1scp7oga" path="res://Tower/Square Tower/Purple_Square_Costs.tres" id="4_ux6lt"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_oebb0"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_sibgt"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_7v1r5"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="8_uif07"]
+
+[node name="Tower_Base" type="Area2D"]
+script = ExtResource("1_w7yo4")
+tower_stats = ExtResource("2_caru4")
+projectile_scene = ExtResource("3_josf4")
+tower_costs = ExtResource("4_ux6lt")
+
+[node name="Tower_Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy_Detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("5_oebb0")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("6_sibgt")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("7_7v1r5")
+
+[node name="to_attacking" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("8_uif07")
+to = NodePath("../../Attacking")
+event = &"Enemies_Inside"
+delay_in_seconds = "0.0"
+
+[node name="Attacking" type="Node" parent="StateChart/Root"]
+script = ExtResource("7_7v1r5")
+
+[node name="to_idle" type="Node" parent="StateChart/Root/Attacking"]
+script = ExtResource("8_uif07")
+to = NodePath("../../Idle")
+event = &"No_Enemies"
+delay_in_seconds = "0.0"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Enemy_Detector" to="." method="_on_enemy_detector_area_entered"]
+[connection signal="area_exited" from="Enemy_Detector" to="." method="_on_enemy_detector_area_exited"]
+[connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
+[connection signal="state_processing" from="StateChart/Root/Attacking" to="." method="_on_attacking_state_processing"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

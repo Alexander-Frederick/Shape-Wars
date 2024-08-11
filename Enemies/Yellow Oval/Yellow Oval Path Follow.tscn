@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://crlq0i31pghuu"]
+
+[ext_resource type="Script" path="res://PathScript.gd" id="1_or286"]
+[ext_resource type="PackedScene" uid="uid://bx1guc14g4jke" path="res://Enemies/Yellow Oval/Yellow Oval.tscn" id="2_ut6sh"]
+
+[node name="PathFollow2D" type="PathFollow2D"]
+script = ExtResource("1_or286")
+
+[node name="Enemy" parent="." instance=ExtResource("2_ut6sh")]

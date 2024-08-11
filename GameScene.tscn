@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4avfmamj5741"]
+
+[ext_resource type="PackedScene" uid="uid://fxwmwj7ngtiv" path="res://Menus_Folder/Menu_Scenes/Main_Menu/main_menu.tscn" id="1_wbjtt"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Main" parent="." instance=ExtResource("1_wbjtt")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 320.0
+offset_top = 180.0
+offset_right = 320.0
+offset_bottom = 180.0
+size_flags_vertical = 4

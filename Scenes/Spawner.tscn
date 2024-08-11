@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ku061np5tpa"]
+
+[ext_resource type="Texture2D" uid="uid://b03l3d7oktp6q" path="res://Sprites/Demon circle (2).png" id="1_xxg0i"]
+[ext_resource type="Script" path="res://Spawner.gd" id="2_wju7x"]
+[ext_resource type="PackedScene" uid="uid://dar4wrvgx2821" path="res://path_follow_2d.tscn" id="3_gh4uo"]
+
+[node name="Spawning" type="Sprite2D"]
+rotation = 0.785398
+texture = ExtResource("1_xxg0i")
+script = ExtResource("2_wju7x")
+spawn_interval_min = 0.145
+spawn_interval_max = 1.0
+enemies = Array[PackedScene]([ExtResource("3_gh4uo")])
+h_offset_range = 31.075
+v_offset_range = 30.005

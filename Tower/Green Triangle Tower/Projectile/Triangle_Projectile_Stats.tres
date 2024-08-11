@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Projectile_Resource" load_steps=4 format=3 uid="uid://do2sw3rhahool"]
+
+[ext_resource type="Texture2D" uid="uid://lvgvfbjlysu3" path="res://Sprites/Green Triangle Projectile.png" id="1_5ws5q"]
+[ext_resource type="Script" path="res://Custom Resourses/Projectile.gd" id="2_8d685"]
+[ext_resource type="PackedScene" uid="uid://bknliwf2yrjub" path="res://Tower/Green Triangle Tower/Projectile/gt_projectile_collision.tscn" id="2_k1bx7"]
+
+[resource]
+script = ExtResource("2_8d685")
+projectile_art = ExtResource("1_5ws5q")
+projectile_size = 1.0
+projectile_collider = ExtResource("2_k1bx7")
+projectile_speed = 1500
+projectile_pierces = 3
+projectile_can_pierce = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2sx5iu2fr2it"]
+
+[ext_resource type="Script" path="res://Draggable.gd" id="1_m1hrm"]
+[ext_resource type="Resource" uid="uid://c6lqgx2561ew4" path="res://Tower/Green Triangle Tower/Triangle Tower.tres" id="2_4r7ts"]
+
+[node name="Tower_Drag" type="Area2D"]
+script = ExtResource("1_m1hrm")
+tower_stats = ExtResource("2_4r7ts")
+
+[node name="Tower_Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Range" type="Area2D" parent="."]
+collision_layer = 0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

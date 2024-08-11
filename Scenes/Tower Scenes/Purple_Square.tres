@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="tower_scenes" load_steps=6 format=3 uid="uid://uxqipjllk0kj"]
+
+[ext_resource type="Script" path="res://Custom Resourses/tower_scenes.gd" id="1_t18j7"]
+[ext_resource type="PackedScene" uid="uid://c4uuion117gqf" path="res://Tower/Square Tower/Purple Square Tower Range.tscn" id="1_wn303"]
+[ext_resource type="PackedScene" uid="uid://co34diw8glm0y" path="res://Tower/Square Tower/Purple Draggable.tscn" id="3_7oyyx"]
+[ext_resource type="PackedScene" uid="uid://b34h1dypa2htk" path="res://Tower/Square Tower/Purple_Square_Loadable.tscn" id="4_p085l"]
+[ext_resource type="Texture2D" uid="uid://dxkjiiimcafrm" path="res://Sprites/Squre_color_theroied.png" id="5_c3rqk"]
+
+[resource]
+script = ExtResource("1_t18j7")
+name = "Purple Square"
+tower_texture = ExtResource("5_c3rqk")
+tower_loadable = ExtResource("4_p085l")
+tower_draggable = ExtResource("3_7oyyx")
+range_of_tower = ExtResource("1_wn303")

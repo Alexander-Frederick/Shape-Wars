@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="tower_scenes" load_steps=6 format=3 uid="uid://bfqsojebldugs"]
+
+[ext_resource type="PackedScene" uid="uid://ue3hh6vfrse8" path="res://Tower/Green Triangle Tower/Green Triangle Tower Range.tscn" id="1_2yhu2"]
+[ext_resource type="Script" path="res://Custom Resourses/tower_scenes.gd" id="1_dceo2"]
+[ext_resource type="PackedScene" uid="uid://c2sx5iu2fr2it" path="res://Tower/Green Triangle Tower/Green Triangle Draggable.tscn" id="3_rggp1"]
+[ext_resource type="PackedScene" uid="uid://blewnssn4ey4n" path="res://Tower/Green Triangle Tower/Green_Triangle_Loadable.tscn" id="4_ddu3j"]
+[ext_resource type="Texture2D" uid="uid://dbghwd4piuyim" path="res://Sprites/Triangle tower for real.png" id="5_8kbf7"]
+
+[resource]
+script = ExtResource("1_dceo2")
+name = "Green Triangle"
+tower_texture = ExtResource("5_8kbf7")
+tower_loadable = ExtResource("4_ddu3j")
+tower_draggable = ExtResource("3_rggp1")
+range_of_tower = ExtResource("1_2yhu2")

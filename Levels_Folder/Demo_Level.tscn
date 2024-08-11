@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://7tx3xwus4uw8"]
+
+[ext_resource type="Script" path="res://Levels_Folder/Level_Handler.gd" id="1_gm8qq"]
+[ext_resource type="PackedScene" uid="uid://6ku061np5tpa" path="res://Scenes/Spawner.tscn" id="1_uv32w"]
+[ext_resource type="PackedScene" uid="uid://dar4wrvgx2821" path="res://path_follow_2d.tscn" id="2_tkmid"]
+[ext_resource type="PackedScene" uid="uid://crlq0i31pghuu" path="res://Enemies/Yellow Oval/Yellow Oval Path Follow.tscn" id="3_i3xgk"]
+[ext_resource type="Texture2D" uid="uid://dxkjiiimcafrm" path="res://Sprites/Squre_color_theroied.png" id="4_c3o82"]
+[ext_resource type="Texture2D" uid="uid://dbghwd4piuyim" path="res://Sprites/Triangle tower for real.png" id="6_nrm1i"]
+
+[sub_resource type="Curve2D" id="Curve2D_hdp1i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 85, 983, 0, 0, 0, 0, 100, 528, -235.717, 13.4695, 235.717, -13.4695, 306, 144, -206.533, -8.9797, 206.533, 8.9797, 750, 908, -172.859, -2.24492, 172.859, 2.24492, 1125, 182, -204.288, 22.4492, 204.288, -22.4492, 1561, 899, -98.7766, 58.368, 98.7766, -58.368, 1778, 216, 0, 0, 0, 0, 2245, 218)
+}
+point_count = 8
+
+[node name="Demo_level" type="Node2D"]
+script = ExtResource("1_gm8qq")
+
+[node name="Spawning" parent="." node_paths=PackedStringArray("parent_path") instance=ExtResource("1_uv32w")]
+position = Vector2(111, 959)
+enemies = Array[PackedScene]([ExtResource("2_tkmid"), ExtResource("3_i3xgk")])
+parent_path = NodePath("../DemoPath")
+
+[node name="DemoPath" type="Path2D" parent="."]
+position = Vector2(20, -43)
+curve = SubResource("Curve2D_hdp1i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuildBar" type="VBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.939
+anchor_top = 0.689
+anchor_right = 0.991
+anchor_bottom = 0.989
+offset_left = 0.039978
+offset_top = -0.0400085
+offset_right = 30.7599
+offset_bottom = 101.96
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.515, 0.515)
+
+[node name="Purple_Square" type="TextureButton" parent="CanvasLayer/HUD/BuildBar"]
+layout_mode = 2
+texture_normal = ExtResource("4_c3o82")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/BuildBar/Purple_Square"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.221
+anchor_top = 0.5
+anchor_right = 0.221
+anchor_bottom = 0.5
+offset_left = -11.0988
+offset_top = -16.6214
+offset_right = 52.9012
+offset_bottom = 47.3786
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("4_c3o82")
+
+[node name="Control" type="Control" parent="CanvasLayer/HUD/BuildBar"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/HUD/BuildBar"]
+layout_mode = 2
+texture_normal = ExtResource("6_nrm1i")
+
+[connection signal="pressed" from="CanvasLayer/HUD/BuildBar/Purple_Square" to="." method="_on_background_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HUD/BuildBar/TextureButton" to="." method="_on_texture_button_pressed"]

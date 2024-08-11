@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://b34h1dypa2htk"]
+
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_8qjh4"]
+[ext_resource type="Script" path="res://Tower/Square Tower/Purple_Square_Loadable.gd" id="1_h6n61"]
+[ext_resource type="Resource" uid="uid://do3n40424fin" path="res://Tower/Square Tower/Purple_Square.tres" id="2_axsio"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="2_ehmvy"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="3_bfn87"]
+[ext_resource type="PackedScene" uid="uid://cmfnqc64x8gey" path="res://Tower/Square Tower/Projectile/Purple_Projectile.tscn" id="3_r4sly"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="4_j4ehn"]
+[ext_resource type="Resource" uid="uid://coh6h1scp7oga" path="res://Tower/Square Tower/Purple_Square_Costs.tres" id="4_mikl3"]
+
+[node name="PurpleSquareLoadable" type="Area2D"]
+script = ExtResource("1_h6n61")
+tower_stats = ExtResource("2_axsio")
+projectile_scene = ExtResource("3_r4sly")
+tower_costs = ExtResource("4_mikl3")
+
+[node name="Tower_Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy_Detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("1_8qjh4")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("2_ehmvy")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("3_bfn87")
+
+[node name="to_attacking" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("4_j4ehn")
+to = NodePath("../../Attacking")
+event = &"Enemies_Inside"
+delay_in_seconds = "0.0"
+
+[node name="Attacking" type="Node" parent="StateChart/Root"]
+script = ExtResource("3_bfn87")
+
+[node name="to_idle" type="Node" parent="StateChart/Root/Attacking"]
+script = ExtResource("4_j4ehn")
+to = NodePath("../../Idle")
+event = &"No_Enemies"
+delay_in_seconds = "0.0"
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cids6ysu0inmb"]
+
+[ext_resource type="Script" path="res://Visual Range.gd" id="1_l57xr"]
+
+[node name="Purple Square Tower Range" type="Node2D"]
+script = ExtResource("1_l57xr")
+current_color = Color(0.764706, 0.235294, 0.278431, 0.623529)

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Tower_Costs" load_steps=2 format=3 uid="uid://coh6h1scp7oga"]
+
+[ext_resource type="Script" path="res://Custom Resourses/Tower_Costs.gd" id="1_ptv0l"]
+
+[resource]
+script = ExtResource("1_ptv0l")
+baseBuy = 0

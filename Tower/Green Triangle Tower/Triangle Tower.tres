@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Tower" load_steps=6 format=3 uid="uid://c6lqgx2561ew4"]
+
+[ext_resource type="Texture2D" uid="uid://tv81i18ggvx5" path="res://Sprites/Triangle tower centered.png.png" id="1_x5wpg"]
+[ext_resource type="Script" path="res://Custom Resourses/Tower.gd" id="2_a1pur"]
+[ext_resource type="PackedScene" uid="uid://ue3hh6vfrse8" path="res://Tower/Green Triangle Tower/Green Triangle Tower Range.tscn" id="3_u5o2k"]
+[ext_resource type="PackedScene" uid="uid://cajgkxvlvltae" path="res://Tower/Green Triangle Tower/Green Triangle Tower Collider.tscn" id="3_uxton"]
+[ext_resource type="PackedScene" uid="uid://dem382pc3wgu" path="res://Tower/Green Triangle Tower/Green Triangle Visual Range.tscn" id="5_u5kv8"]
+
+[resource]
+script = ExtResource("2_a1pur")
+attack_speed = 0.3
+towerDamage = 20
+towerRange = 1.0
+totalPierces = 2
+towerCollision = ExtResource("3_uxton")
+towerRangeShape = ExtResource("3_u5o2k")
+towerVisualRangeShape = ExtResource("5_u5kv8")
+art = ExtResource("1_x5wpg")

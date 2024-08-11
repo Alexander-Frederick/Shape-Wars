@@ -1,0 +1,3 @@
+class_name Green_Triangle_Projectile
+extends Projectile
+

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmfnqc64x8gey"]
+
+[ext_resource type="Script" path="res://Tower/Square Tower/Projectile/Purple_Projectile.gd" id="1_fwgvr"]
+[ext_resource type="Resource" uid="uid://ctbgc887ihdib" path="res://Tower/Square Tower/Projectile/Purple_Square_Projectile.tres" id="2_csm7m"]
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fwgvr")
+projectile_stats = ExtResource("2_csm7m")

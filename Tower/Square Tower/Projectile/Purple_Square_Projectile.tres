@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Projectile_Resource" load_steps=4 format=3 uid="uid://ctbgc887ihdib"]
+
+[ext_resource type="Texture2D" uid="uid://cjd635dbxsxxn" path="res://Sprites/Yellow Projectile.png" id="1_ffs77"]
+[ext_resource type="Script" path="res://Custom Resourses/Projectile.gd" id="1_nygmh"]
+[ext_resource type="PackedScene" uid="uid://gbnmmmjvokm4" path="res://Tower/Square Tower/Projectile/Purple_Square_Projectile_Collider.tscn" id="2_h5ph6"]
+
+[resource]
+script = ExtResource("1_nygmh")
+projectile_art = ExtResource("1_ffs77")
+projectile_size = 1.0
+projectile_collider = ExtResource("2_h5ph6")
+projectile_speed = 150
+projectile_pierces = 3
+projectile_can_pierce = true

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://xh24ghqw7pge"]
+
+[ext_resource type="Script" path="res://Base_Items/Tower.gd" id="1_cb4l4"]
+[ext_resource type="Resource" uid="uid://do3n40424fin" path="res://Tower/Square Tower/Purple_Square.tres" id="2_rs43b"]
+[ext_resource type="PackedScene" uid="uid://t1u7k5uki32v" path="res://projectile.tscn" id="3_28feg"]
+[ext_resource type="Script" path="res://Custom Resourses/Tower_Costs.gd" id="4_l4f1q"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_wy6ud"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_tvcoq"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_q2qnj"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="8_l8cjq"]
+
+[sub_resource type="Resource" id="Resource_3o5bs"]
+script = ExtResource("4_l4f1q")
+baseBuy = 20
+
+[node name="Tower_Base" type="Area2D"]
+script = ExtResource("1_cb4l4")
+tower_stats = ExtResource("2_rs43b")
+projectile_scene = ExtResource("3_28feg")
+tower_costs = SubResource("Resource_3o5bs")
+
+[node name="Tower_Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy_Detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("5_wy6ud")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("6_tvcoq")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("7_q2qnj")
+
+[node name="to_attacking" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("8_l8cjq")
+to = NodePath("../../Attacking")
+event = &"Enemies_Inside"
+delay_in_seconds = "0.0"
+
+[node name="Attacking" type="Node" parent="StateChart/Root"]
+script = ExtResource("7_q2qnj")
+
+[node name="to_idle" type="Node" parent="StateChart/Root/Attacking"]
+script = ExtResource("8_l8cjq")
+to = NodePath("../../Idle")
+event = &"No_Enemies"
+delay_in_seconds = "0.0"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Enemy_Detector" to="." method="_on_enemy_detector_area_entered"]
+[connection signal="area_exited" from="Enemy_Detector" to="." method="_on_enemy_detector_area_exited"]
+[connection signal="state_processing" from="StateChart/Root/Idle" to="." method="_on_idle_state_processing"]
+[connection signal="state_processing" from="StateChart/Root/Attacking" to="." method="_on_attacking_state_processing"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

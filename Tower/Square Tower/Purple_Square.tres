@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tower" load_steps=6 format=3 uid="uid://do3n40424fin"]
+
+[ext_resource type="Script" path="res://Custom Resourses/Tower.gd" id="1_c1sjr"]
+[ext_resource type="Texture2D" uid="uid://dxkjiiimcafrm" path="res://Sprites/Squre_color_theroied.png" id="1_paf6j"]
+[ext_resource type="PackedScene" uid="uid://ckbo2pbiljein" path="res://Tower/Square Tower/Purple Square Collision.tscn" id="3_5buug"]
+[ext_resource type="PackedScene" uid="uid://c4uuion117gqf" path="res://Tower/Square Tower/Purple Square Tower Range.tscn" id="3_qnqsv"]
+[ext_resource type="PackedScene" uid="uid://cids6ysu0inmb" path="res://Tower/Square Tower/Purple Square Visual Range.tscn" id="5_uwmsn"]
+
+[resource]
+script = ExtResource("1_c1sjr")
+attack_speed = 1.0
+towerDamage = 20
+towerRange = 1.0
+towerCollision = ExtResource("3_5buug")
+towerRangeShape = ExtResource("3_qnqsv")
+towerVisualRangeShape = ExtResource("5_uwmsn")
+art = ExtResource("1_paf6j")

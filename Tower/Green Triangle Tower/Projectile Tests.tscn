@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://duy4ar03a1oct"]
+
+[ext_resource type="Script" path="res://Base_Items/Projectile_Script.gd" id="1_rsslr"]
+[ext_resource type="Script" path="res://Custom Resourses/Projectile.gd" id="2_c1swl"]
+[ext_resource type="Texture2D" uid="uid://cjd635dbxsxxn" path="res://Sprites/Yellow Projectile.png" id="2_l5dt4"]
+[ext_resource type="PackedScene" uid="uid://b1ye71t5open3" path="res://triangle_range_shape.tscn" id="3_i48rw"]
+
+[sub_resource type="Resource" id="Resource_mpoi5"]
+script = ExtResource("2_c1swl")
+projectile_art = ExtResource("2_l5dt4")
+projectile_size = 1.0
+projectile_collider = ExtResource("3_i48rw")
+projectile_speed = 1500
+projectile_pierces = 1
+projectile_can_pierce = true
+
+[node name="Base_Projectile" type="Area2D" groups=["projectile"]]
+script = ExtResource("1_rsslr")
+projectile_stats = SubResource("Resource_mpoi5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
